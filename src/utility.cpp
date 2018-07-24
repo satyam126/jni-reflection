@@ -38,6 +38,18 @@ void throwFieldNotFoundError(JNIEnv *env, const std::string &className, const st
     throwError(env, "com/jnireflection/bindings/errors/FieldNotFoundError", ss.str());
 }
 
+void throwMethodNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
+    std::stringstream ss;
+    ss << "Target method " << className.data() << "#" << fieldName.data() << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/MethodNotFoundError", ss.str());
+}
+
+void throwConstructorNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
+    std::stringstream ss;
+    ss << "Target Constructor " << className.data() << "#" << fieldName.data() << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/ConstructorNotFoundError", ss.str());
+}
+
 std::string jStringToString(JNIEnv *env, jstring jStr) {
     if (jStr == nullptr) {
         return "";

@@ -22,6 +22,10 @@ void throwClassNotFoundError(JNIEnv *env, const std::string &className);
 
 void throwFieldNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName);
 
+void throwMethodNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName);
+
+void throwConstructorNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName);
+
 std::string jStringToString(JNIEnv *env, jstring jStr);
 
 jvmtiIterationControl JNICALL heapObjectCallback(jlong class_tag, jlong size, jlong *tag_ptr, void *user_data);
