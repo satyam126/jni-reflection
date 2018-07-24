@@ -35,6 +35,33 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getStati
     return env->GetStaticObjectField(targetClass, fieldId);
 }
 
+void
+Java_com_jnireflection_bindings_JNIReflection_setStaticObject(JNIEnv *env, jclass clazz, jobject object,
+                                                              jstring jClassName, jstring jFieldName,
+                                                              jstring jSignature) {
+    std::string className = jStringToString(env, jClassName);
+    std::string fieldName = jStringToString(env, jFieldName);
+    std::string signature = jStringToString(env, jSignature);
+
+    jclass targetClass = env->FindClass(className.data());
+#ifdef DEBUG
+    if (targetClass == nullptr) {
+        throwClassNotFoundError(env, className);
+        return;
+    }
+#endif
+
+    jfieldID fieldId = env->GetStaticFieldID(targetClass, fieldName.data(), signature.data());
+#ifdef DEBUG
+    if (fieldId == nullptr) {
+        throwFieldNotFoundError(env, className, fieldName);
+        return;
+    }
+#endif
+
+    env->SetStaticObjectField(targetClass, fieldId, object);
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
