@@ -35,7 +35,7 @@ void throwClassNotFoundError(JNIEnv *env, const std::string &className) {
 void throwFieldNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
     std::stringstream ss;
     ss << "Target field " << className.data() << "#" << fieldName.data() << " was not found";
-    throwError(env, ss.str());
+    throwError(env, "com/jnireflection/bindings/errors/FieldNotFoundError", ss.str());
 }
 
 std::string jStringToString(JNIEnv *env, jstring jStr) {
