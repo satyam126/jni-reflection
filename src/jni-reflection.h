@@ -25,6 +25,134 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticOb
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticByte
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)B
+ */
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticByte
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticByte
+ * Signature: (BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticByte
+        (JNIEnv *, jclass, jbyte, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticShort
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)S
+ */
+JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticShort
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticShort
+ * Signature: (SLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticShort
+        (JNIEnv *, jclass, jshort, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticInt
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticInt
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticInt
+ * Signature: (BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticInt
+        (JNIEnv *, jclass, jbyte, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticLong
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticLong
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticLong
+ * Signature: (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticLong
+        (JNIEnv *, jclass, jlong, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticFloat
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)F
+ */
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticFloat
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticFloat
+ * Signature: (BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticFloat
+        (JNIEnv *, jclass, jbyte, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticDouble
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)B
+ */
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticDouble
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticDouble
+ * Signature: (DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticDouble
+        (JNIEnv *, jclass, jdouble, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticBoolean
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticBoolean
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticBoolean
+ * Signature: (ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticBoolean
+        (JNIEnv *, jclass, jboolean, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getStaticChar
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)C
+ */
+JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticChar
+        (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setStaticChar
+ * Signature: (CLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticChar
+        (JNIEnv *, jclass, jchar, jstring, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
  * Method:    getObject
  * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
  */
