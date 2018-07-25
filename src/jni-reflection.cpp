@@ -16,13 +16,13 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getStati
 }
 
 void
-Java_com_jnireflection_bindings_JNIReflection_setStaticObject(JNIEnv *env, jclass clazz, jobject object,
+Java_com_jnireflection_bindings_JNIReflection_setStaticObject(JNIEnv *env, jclass clazz, jobject newObject,
                                                               jstring jClassName, jstring jFieldName,
                                                               jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
     if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
-        return env->SetStaticObjectField(targetClass, fieldId, object);
+        env->SetStaticObjectField(targetClass, fieldId, newObject);
     }
 }
 
@@ -34,6 +34,15 @@ JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticB
         return env->GetStaticByteField(targetClass, fieldId);
     }
     return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticByte
+        (JNIEnv *env, jclass clazz, jbyte newByte, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        env->SetStaticByteField(targetClass, fieldId, newByte);
+    }
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
