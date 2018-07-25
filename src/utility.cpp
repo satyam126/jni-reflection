@@ -80,3 +80,23 @@ heapObjectCallback(jlong class_tag, jlong size, jlong *tag_ptr, void *user_data)
     *tag_ptr = 1;
     return JVMTI_ITERATION_CONTINUE;
 }
+
+bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstring jSignature, jfieldID *fieldId,
+                      jclass *targetClass) {
+    std::string className = jStringToString(env, jClassName);
+    std::string fieldName = jStringToString(env, jFieldName);
+    std::string signature = jStringToString(env, jSignature);
+
+    *targetClass = env->FindClass(className.data());
+    if (*targetClass == nullptr) {
+        throwClassNotFoundError(env, className);
+        return false;
+    }
+    *fieldId = env->GetStaticFieldID(*targetClass, fieldName.data(), signature.data());
+    if (*fieldId == nullptr) {
+        throwFieldNotFoundError(env, className, fieldName);
+        return false;
+    }
+
+    return true;
+}

@@ -1,6 +1,3 @@
-#define DEBUG
-
-
 #include <iostream>
 #include <sstream>
 
@@ -10,56 +7,33 @@
 
 JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticObject
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
-    std::string className = jStringToString(env, jClassName);
-    std::string fieldName = jStringToString(env, jFieldName);
-    std::string signature = jStringToString(env, jSignature);
-
-    jclass targetClass = env->FindClass(className.data());
-#ifdef DEBUG
-    if (targetClass == nullptr) {
-        throwClassNotFoundError(env, className);
-        return nullptr;
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticObjectField(targetClass, fieldId);
     }
-#endif
-
-    jfieldID fieldId = env->GetStaticFieldID(targetClass, fieldName.data(), signature.data());
-#ifdef DEBUG
-    if (fieldId == nullptr) {
-        throwFieldNotFoundError(env, className, fieldName);
-        return nullptr;
-    }
-#endif
-
-    env->DeleteLocalRef(targetClass);
-
-    return env->GetStaticObjectField(targetClass, fieldId);
+    return nullptr;
 }
 
 void
 Java_com_jnireflection_bindings_JNIReflection_setStaticObject(JNIEnv *env, jclass clazz, jobject object,
                                                               jstring jClassName, jstring jFieldName,
                                                               jstring jSignature) {
-    std::string className = jStringToString(env, jClassName);
-    std::string fieldName = jStringToString(env, jFieldName);
-    std::string signature = jStringToString(env, jSignature);
-
-    jclass targetClass = env->FindClass(className.data());
-#ifdef DEBUG
-    if (targetClass == nullptr) {
-        throwClassNotFoundError(env, className);
-        return;
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->SetStaticObjectField(targetClass, fieldId, object);
     }
-#endif
+}
 
-    jfieldID fieldId = env->GetStaticFieldID(targetClass, fieldName.data(), signature.data());
-#ifdef DEBUG
-    if (fieldId == nullptr) {
-        throwFieldNotFoundError(env, className, fieldName);
-        return;
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticByte
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticByteField(targetClass, fieldId);
     }
-#endif
-
-    env->SetStaticObjectField(targetClass, fieldId, object);
+    return 0;
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances

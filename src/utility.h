@@ -30,5 +30,8 @@ std::string jStringToString(JNIEnv *env, jstring jStr);
 
 jvmtiIterationControl JNICALL heapObjectCallback(jlong class_tag, jlong size, jlong *tag_ptr, void *user_data);
 
+bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstring jSignature, jfieldID *fieldId,
+                      jclass *targetClass);
+
 
 #endif //JNI_REFLECTION_UTILITY_H
