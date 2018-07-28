@@ -138,6 +138,25 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticDo
     }
 }
 
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticBoolean
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature){
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticBooleanField(targetClass, fieldId);
+    }
+    return JNI_FALSE;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticBoolean
+        (JNIEnv *env, jclass clazz, jboolean newBoolean, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        env->SetStaticBooleanField(targetClass, fieldId, newBoolean);
+    }
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
