@@ -81,6 +81,25 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticIn
     }
 }
 
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticLong
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticLongField(targetClass, fieldId);
+    }
+    return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticLong
+        (JNIEnv *env, jclass clazz, jlong newLong, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        env->SetStaticLongField(targetClass, fieldId, newLong);
+    }
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
