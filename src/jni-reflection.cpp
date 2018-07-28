@@ -186,7 +186,7 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getInsta
 }
 
 JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceObject
-        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature, jobject newObject) {
+        (JNIEnv *env, jclass clazz, jobject newObject, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
        env->SetObjectField(instance, fieldId, newObject);
