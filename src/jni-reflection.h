@@ -162,10 +162,138 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getInsta
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
  * Method:    setInstanceObject
- * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+ * Signature: (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceObject
-        (JNIEnv *, jclass, jobject, jstring, jstring, jobject);
+        (JNIEnv *, jclass, jobject, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceByte
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)B
+ */
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceByte
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceByte
+ * Signature: (BLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceByte
+        (JNIEnv *, jclass, jbyte, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceShort
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)S
+ */
+JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceShort
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceShort
+ * Signature: (SLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceShort
+        (JNIEnv *, jclass, jshort, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceInt
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceInt
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceInt
+ * Signature: (ILjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceInt
+        (JNIEnv *, jclass, jint, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceLong
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceLong
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceLong
+ * Signature: (JLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceLong
+        (JNIEnv *, jclass, jlong, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceFloat
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)F
+ */
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceFloat
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceloat
+ * Signature: (FLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceloat
+        (JNIEnv *, jclass, jfloat, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceDouble
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)D
+ */
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceDouble
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceDouble
+ * Signature: (DLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceDouble
+        (JNIEnv *, jclass, jdouble, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceBoolean
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceBoolean
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceBoolean
+ * Signature: (ZLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceBoolean
+        (JNIEnv *, jclass, jboolean, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    getInstanceChar
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)C
+ */
+JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceChar
+        (JNIEnv *, jclass, jobject, jstring, jstring);
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceChar
+ * Signature: (CLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceChar
+        (JNIEnv *, jclass, jchar, jobject, jstring, jstring);
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
