@@ -100,3 +100,22 @@ bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstri
 
     return true;
 }
+
+bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstring jSignature, jfieldID *fieldId) {
+    std::string fieldName = jStringToString(env, jFieldName);
+    std::string signature = jStringToString(env, jSignature);
+
+    jclass targetClass = env->GetObjectClass(instance);
+    if (targetClass == nullptr) {
+        throwClassNotFoundError(env, "null");
+        return false;
+    }
+
+    *fieldId = env->GetFieldID(targetClass, fieldName.data(), signature.data());
+    if (*fieldId == nullptr) {
+        throwFieldNotFoundError(env, "null", fieldName);
+        return false;
+    }
+
+    return true;
+}

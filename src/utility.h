@@ -33,5 +33,7 @@ jvmtiIterationControl JNICALL heapObjectCallback(jlong class_tag, jlong size, jl
 bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstring jSignature, jfieldID *fieldId,
                       jclass *targetClass);
 
+bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstring jSignature, jfieldID *fieldId);
+
 
 #endif //JNI_REFLECTION_UTILITY_H

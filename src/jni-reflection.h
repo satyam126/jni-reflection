@@ -153,19 +153,19 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticCh
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
- * Method:    getObject
- * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+ * Method:    getInstanceObject
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
  */
-JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getObject
-        (JNIEnv *, jclass, jstring, jstring, jstring);
+JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceObject
+        (JNIEnv *, jclass, jobject, jstring, jstring);
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
- * Method:    setObject
- * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+ * Method:    setInstanceObject
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
  */
-JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIReflection_setObject
-        (JNIEnv *, jclass, jobject, jstring, jstring, jstring);
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceObject
+        (JNIEnv *, jclass, jobject, jstring, jstring, jobject);
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
