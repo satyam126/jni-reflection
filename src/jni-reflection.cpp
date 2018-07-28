@@ -193,6 +193,23 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstance
     }
 }
 
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceByte
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetByteField(instance, fieldId);
+    }
+    return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceByte
+        (JNIEnv *env, jclass clazz, jbyte newByte, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetByteField(instance, fieldId, newByte);
+    }
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
