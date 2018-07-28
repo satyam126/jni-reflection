@@ -56,20 +56,20 @@ std::string jStringToString(JNIEnv *env, jstring jStr) {
     }
 
     // get string bytes
-    const jclass stringClass = env->GetObjectClass(jStr);
-    const jmethodID getBytesId = env->GetMethodID(stringClass, "getBytes", "(Ljava/lang/String;)[B");
-    const jbyteArray stringJbytes = (jbyteArray) env->CallObjectMethod(jStr, getBytesId, env->NewStringUTF("UTF-8"));
+    jclass stringClass = env->GetObjectClass(jStr);
+    jmethodID getBytesId = env->GetMethodID(stringClass, "getBytes", "(Ljava/lang/String;)[B");
+    jbyteArray stringJBytes = (jbyteArray) env->CallObjectMethod(jStr, getBytesId, env->NewStringUTF("UTF-8"));
 
     // get buffer details
-    size_t length = (size_t) env->GetArrayLength(stringJbytes);
-    jbyte *pBytes = env->GetByteArrayElements(stringJbytes, nullptr);
+    size_t length = (size_t) env->GetArrayLength(stringJBytes);
+    jbyte *pBytes = env->GetByteArrayElements(stringJBytes, nullptr);
 
     // copy bytes over
     std::string ret = std::string((char *) pBytes, length);
-    env->ReleaseByteArrayElements(stringJbytes, pBytes, JNI_ABORT);
+    env->ReleaseByteArrayElements(stringJBytes, pBytes, JNI_ABORT);
 
     // release references
-    env->DeleteLocalRef(stringJbytes);
+    env->DeleteLocalRef(stringJBytes);
     env->DeleteLocalRef(stringClass);
 
     return ret;

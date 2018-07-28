@@ -66,10 +66,10 @@ JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticIn
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
  * Method:    setStaticInt
- * Signature: (BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ * Signature: (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticInt
-        (JNIEnv *, jclass, jbyte, jstring, jstring, jstring);
+        (JNIEnv *, jclass, jint, jstring, jstring, jstring);
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
