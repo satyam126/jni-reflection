@@ -1,4 +1,5 @@
 #include <sstream>
+#include <c++/4.8.3/iostream>
 
 #include "utility.h"
 
@@ -104,6 +105,11 @@ bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstri
 bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstring jSignature, jfieldID *fieldId) {
     std::string fieldName = jStringToString(env, jFieldName);
     std::string signature = jStringToString(env, jSignature);
+
+    if (instance == nullptr) {
+        throwError(env, "java/lang/NullPointerException", "instance is null");
+        return false;
+    }
 
     jclass targetClass = env->GetObjectClass(instance);
     if (targetClass == nullptr) {
