@@ -119,6 +119,25 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticFl
     }
 }
 
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticDouble
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature){
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticDoubleField(targetClass, fieldId);
+    }
+    return 0.0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticDouble
+        (JNIEnv *env, jclass clazz, jdouble newDouble, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        env->SetStaticDoubleField(targetClass, fieldId, newDouble);
+    }
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
