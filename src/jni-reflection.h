@@ -98,17 +98,17 @@ JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getStatic
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
  * Method:    setStaticFloat
- * Signature: (BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ * Signature: (FLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticFloat
-        (JNIEnv *, jclass, jbyte, jstring, jstring, jstring);
+        (JNIEnv *, jclass, jfloat, jstring, jstring, jstring);
 
 /*
  * Class:     com_jnireflection_bindings_JNIReflection
  * Method:    getStaticDouble
- * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)B
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)D
  */
-JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticDouble
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticDouble
         (JNIEnv *, jclass, jstring, jstring, jstring);
 
 /*

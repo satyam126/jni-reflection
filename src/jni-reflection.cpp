@@ -100,6 +100,25 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticLo
     }
 }
 
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getStaticFloat
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        return env->GetStaticFloatField(targetClass, fieldId);
+    }
+    return 0.0f;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setStaticFloat
+        (JNIEnv *env, jclass clazz, jfloat newFloat, jstring jClassName, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    jclass targetClass;
+    if (getStaticFieldId(env, jClassName, jFieldName, jSignature, &fieldId, &targetClass)) {
+        env->SetStaticFloatField(targetClass, fieldId, newFloat);
+    }
+}
+
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
