@@ -244,7 +244,7 @@ JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstan
  * Method:    setInstanceloat
  * Signature: (FLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceloat
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceFloat
         (JNIEnv *, jclass, jfloat, jobject, jstring, jstring);
 
 /*

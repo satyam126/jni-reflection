@@ -189,7 +189,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstance
         (JNIEnv *env, jclass clazz, jobject newObject, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
-       env->SetObjectField(instance, fieldId, newObject);
+        env->SetObjectField(instance, fieldId, newObject);
     }
 }
 
@@ -209,6 +209,131 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstance
         env->SetByteField(instance, fieldId, newByte);
     }
 }
+
+JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceShort
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetShortField(instance, fieldId);
+    }
+    return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceShort
+        (JNIEnv *env, jclass clazz, jshort newShort, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetShortField(instance, fieldId, newShort);
+    }
+}
+
+JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceInt
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetIntField(instance, fieldId);
+    }
+    return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceInt
+        (JNIEnv *env, jclass clazz, jint newInt, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetIntField(instance, fieldId, newInt);
+    }
+}
+
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceLong
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetLongField(instance, fieldId);
+    }
+    return 0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceLong
+        (JNIEnv *env, jclass clazz, jlong newLong, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetLongField(instance, fieldId, newLong);
+    }
+}
+
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceFloat
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetFloatField(instance, fieldId);
+    }
+    return 0.0f;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceFloat
+        (JNIEnv *env, jclass clazz, jfloat newFloat, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetFloatField(instance, fieldId, newFloat);
+    }
+}
+
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceDouble
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetDoubleField(instance, fieldId);
+    }
+    return 0.0;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceDouble
+        (JNIEnv *env, jclass clazz, jdouble newDouble, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetDoubleField(instance, fieldId, newDouble);
+    }
+}
+
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceBoolean
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetBooleanField(instance, fieldId);
+    }
+    return JNI_FALSE;
+}
+
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceBoolean
+        (JNIEnv *env, jclass clazz, jboolean newBoolean, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetBooleanField(instance, fieldId, newBoolean);
+    }
+}
+
+JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstanceChar
+        (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        return env->GetCharField(instance, fieldId);
+    }
+    return 0;
+}
+
+/*
+ * Class:     com_jnireflection_bindings_JNIReflection
+ * Method:    setInstanceChar
+ * Signature: (CLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIReflection_setInstanceChar
+        (JNIEnv *env, jclass clazz, jchar newChar, jobject instance, jstring jFieldName, jstring jSignature) {
+    jfieldID fieldId;
+    if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
+        env->SetCharField(instance, fieldId, newChar);
+    }
+}
+
 
 JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIReflection_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
