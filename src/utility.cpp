@@ -39,41 +39,29 @@ void throwFieldNotFoundError(JNIEnv *env, const std::string &className, const st
     throwError(env, "com/jnireflection/bindings/errors/FieldNotFoundError", ss.str());
 }
 
-void throwMethodNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
+void throwMethodNotFoundError(JNIEnv *env, const std::string &className, const std::string &methodName) {
     std::stringstream ss;
-    ss << "Target method " << className.data() << "#" << fieldName.data() << " was not found";
+    ss << "Target method " << className.data() << "#" << methodName.data() << " was not found";
     throwError(env, "com/jnireflection/bindings/errors/MethodNotFoundError", ss.str());
 }
 
-void throwConstructorNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
+void throwMethodSignatureError(JNIEnv *env, const std::string &errorMessage) {
+    throwError(env, "com/jnireflection/bindings/errors/MethodSignatureError", errorMessage);
+}
+
+void throwConstructorNotFoundError(JNIEnv *env, const std::string &className, const std::string &constructorName) {
     std::stringstream ss;
-    ss << "Target Constructor " << className.data() << "#" << fieldName.data() << " was not found";
+    ss << "Target Constructor " << className.data() << "#" << constructorName.data() << " was not found";
     throwError(env, "com/jnireflection/bindings/errors/ConstructorNotFoundError", ss.str());
 }
 
 std::string jStringToString(JNIEnv *env, jstring jStr) {
     if (jStr == nullptr) {
+        throwError(env, "java/lang/NullPointerException", "jstring is null");
         return "";
     }
 
-    // get string bytes
-    jclass stringClass = env->GetObjectClass(jStr);
-    jmethodID getBytesId = env->GetMethodID(stringClass, "getBytes", "(Ljava/lang/String;)[B");
-    jbyteArray stringJBytes = (jbyteArray) env->CallObjectMethod(jStr, getBytesId, env->NewStringUTF("UTF-8"));
-
-    // get buffer details
-    size_t length = (size_t) env->GetArrayLength(stringJBytes);
-    jbyte *pBytes = env->GetByteArrayElements(stringJBytes, nullptr);
-
-    // copy bytes over
-    std::string ret = std::string((char *) pBytes, length);
-    env->ReleaseByteArrayElements(stringJBytes, pBytes, JNI_ABORT);
-
-    // release references
-    env->DeleteLocalRef(stringJBytes);
-    env->DeleteLocalRef(stringClass);
-
-    return ret;
+    return env->GetStringUTFChars(jStr, JNI_FALSE);
 }
 
 jvmtiIterationControl JNICALL
@@ -124,4 +112,169 @@ bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstri
     }
 
     return true;
+}
+
+bool getStaticMethodId(JNIEnv *env, jstring jClassName, jstring jMethodName, jstring jSignature, jmethodID *methodId,
+                      jclass *targetClass) {
+    std::string className = jStringToString(env, jClassName);
+    std::string methodName = jStringToString(env, jMethodName);
+    std::string signature = jStringToString(env, jSignature);
+
+    *targetClass = env->FindClass(className.data());
+    if (*targetClass == nullptr) {
+        throwClassNotFoundError(env, className);
+        return false;
+    }
+    *methodId = env->GetStaticMethodID(*targetClass, methodName.data(), signature.data());
+    if (*methodId == nullptr) {
+        throwMethodNotFoundError(env, className, methodName);
+        return false;
+    }
+
+    return true;
+}
+
+jint getIntValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "intValue", "()I");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to int");
+        return 0;
+    }
+    return env->CallIntMethod(object, methodId);
+}
+
+jbyte getByteValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "byteValue", "()B");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to byte");
+        return 0;
+    }
+    return env->CallByteMethod(object, methodId);
+}
+
+jchar getCharValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "charValue", "()C");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to char");
+        return 0;
+    }
+    return env->CallCharMethod(object, methodId);
+}
+
+jdouble getDoubleValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "doubleValue", "()D");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to double");
+        return 0;
+    }
+    return env->CallDoubleMethod(object, methodId);
+}
+
+jfloat getFloatValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "floatValue", "()F");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to float");
+        return 0;
+    }
+    return env->CallFloatMethod(object, methodId);
+}
+
+jlong getLongValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "longValue", "()J");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to long");
+        return 0;
+    }
+    return env->CallLongMethod(object, methodId);
+}
+
+jshort getShortValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "shortValue", "()S");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to short");
+        return 0;
+    }
+    return env->CallShortMethod(object, methodId);
+}
+
+jboolean getBooleanValue(JNIEnv *env, jobject object) {
+    jclass targetClass = env->GetObjectClass(object);
+    jmethodID methodId = env->GetMethodID(targetClass, "booleanValue", "()Z");
+    if (methodId == nullptr) {
+        throwMethodSignatureError(env, "could not convert argument to boolean");
+        return 0;
+    }
+    return env->CallBooleanMethod(object, methodId);
+}
+
+bool jObjectToJValue(JNIEnv *env, char typeChar, jobject object, jvalue *value) {
+    switch (typeChar) {
+        case 'L':
+            value->l = object;
+            break;
+        case 'B':
+            value->b = getByteValue(env, object);
+            break;
+        case 'C':
+            value->c = getCharValue(env, object);
+            break;
+        case 'D':
+            value->d = getDoubleValue(env, object);
+            break;
+        case 'F':
+            value->f = getFloatValue(env, object);
+            break;
+        case 'I':
+            value->i = getIntValue(env, object);
+            break;
+        case 'J':
+            value->j = getLongValue(env, object);
+            break;
+        case 'S':
+            value->s = getShortValue(env, object);
+            break;
+        case 'Z':
+            value->z = getBooleanValue(env, object);
+            break;
+        default:
+            std::string errorMessage = "invalid parameter type: ";
+            errorMessage += typeChar;
+            throwMethodSignatureError(env, errorMessage);
+            return false;
+    }
+    return true;
+}
+
+bool jObjectArrayToJValuePtr
+        (JNIEnv *env, jobjectArray arguments, std::string &parameterTypes, jvalue *jValues) {
+
+    for (unsigned long i = 0; i < parameterTypes.length(); i++) {
+        jobject argument = env->GetObjectArrayElement(arguments, i);
+        char parameterType = parameterTypes.at(i);
+        if (!jObjectToJValue(env, parameterType, argument, jValues + i)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool getStaticMethodInvocationDetails
+        (JNIEnv *env, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
+         std::string &parameterTypes, jclass *targetClass, jmethodID *methodId, jvalue *jValues) {
+
+    if (getStaticMethodId(env, jClassName, jMethodName, jSignature, methodId, targetClass)) {
+        if (jObjectArrayToJValuePtr(env, args, parameterTypes, jValues)) {
+            return true;
+        }
+    }
+
+    return false;
 }
