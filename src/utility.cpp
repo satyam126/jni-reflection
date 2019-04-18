@@ -64,6 +64,16 @@ std::string jStringToString(JNIEnv *env, jstring jStr) {
     return env->GetStringUTFChars(jStr, JNI_FALSE);
 }
 
+bool jStringToString(JNIEnv *env, jstring inJStr, char * outStr, unsigned long strLength) {
+    if (inJStr == nullptr) {
+        throwError(env, "java/lang/NullPointerException", "jstring is null");
+        return false;
+    }
+
+    env->GetStringUTFRegion(inJStr, 0, strLength, outStr);
+    return true;
+}
+
 jvmtiIterationControl JNICALL
 heapObjectCallback(jlong class_tag, jlong size, jlong *tag_ptr, void *user_data) {
     *tag_ptr = 1;
@@ -128,6 +138,29 @@ bool getStaticMethodId(JNIEnv *env, jstring jClassName, jstring jMethodName, jst
     *methodId = env->GetStaticMethodID(*targetClass, methodName.data(), signature.data());
     if (*methodId == nullptr) {
         throwMethodNotFoundError(env, className, methodName);
+        return false;
+    }
+
+    return true;
+}
+
+bool getInstanceMethodId(JNIEnv *env, jobject instance, jstring jMethodName, jstring jSignature, jmethodID *methodId) {
+    if (instance == nullptr) {
+        throwError(env, "java/lang/NullPointerException", "instance is null");
+        return false;
+    }
+
+    std::string methodName = jStringToString(env, jMethodName);
+    std::string signature = jStringToString(env, jSignature);
+
+    jclass targetClass = env->GetObjectClass(instance);
+    if (targetClass == nullptr) {
+        throwClassNotFoundError(env, "null");
+        return false;
+    }
+    *methodId = env->GetMethodID(targetClass, methodName.data(), signature.data());
+    if (*methodId == nullptr) {
+        throwMethodNotFoundError(env, "null", methodName);
         return false;
     }
 
