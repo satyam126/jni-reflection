@@ -18,53 +18,44 @@ void initialize(JNIEnv *env) {
     jvmti->AddCapabilities(&capabilities);
 }
 
-void throwError(JNIEnv *env, const std::string &message) {
-    throwError(env, "java/lang/Error", message);
+void throwError(JNIEnv *env, const char *message) {
+    throwError(env, const_cast<char *>("java/lang/Error"), const_cast<char *>(message));
 }
 
-void throwError(JNIEnv *env, const std::string &errorClassName, const std::string &message) {
-    jclass errorClass = env->FindClass(errorClassName.data());
-    env->ThrowNew(errorClass, message.data());
+void throwError(JNIEnv *env, const char *errorClassName, const char *message) {
+    jclass errorClass = env->FindClass(errorClassName);
+    env->ThrowNew(errorClass, message);
 }
 
-void throwClassNotFoundError(JNIEnv *env, const std::string &className) {
+void throwClassNotFoundError(JNIEnv *env, const char *className) {
     std::stringstream ss;
-    ss << "Target class " << className.data() << " was not found";
-    throwError(env, "com/jnireflection/bindings/errors/ClassNotFoundError", ss.str());
+    ss << "Target class " << className << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/ClassNotFoundError", ss.str().data());
 }
 
-void throwFieldNotFoundError(JNIEnv *env, const std::string &className, const std::string &fieldName) {
+void throwFieldNotFoundError(JNIEnv *env, const char *className, const char *fieldName) {
     std::stringstream ss;
-    ss << "Target field " << className.data() << "#" << fieldName.data() << " was not found";
-    throwError(env, "com/jnireflection/bindings/errors/FieldNotFoundError", ss.str());
+    ss << "Target field " << className << "#" << fieldName << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/FieldNotFoundError", ss.str().data());
 }
 
-void throwMethodNotFoundError(JNIEnv *env, const std::string &className, const std::string &methodName) {
+void throwMethodNotFoundError(JNIEnv *env, const char *className, const char *methodName) {
     std::stringstream ss;
-    ss << "Target method " << className.data() << "#" << methodName.data() << " was not found";
-    throwError(env, "com/jnireflection/bindings/errors/MethodNotFoundError", ss.str());
+    ss << "Target method " << className << "#" << methodName << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/MethodNotFoundError", ss.str().data());
 }
 
-void throwMethodSignatureError(JNIEnv *env, const std::string &errorMessage) {
+void throwMethodSignatureError(JNIEnv *env, const char *errorMessage) {
     throwError(env, "com/jnireflection/bindings/errors/MethodSignatureError", errorMessage);
 }
 
-void throwConstructorNotFoundError(JNIEnv *env, const std::string &className, const std::string &constructorName) {
+void throwConstructorNotFoundError(JNIEnv *env, const char *className, const char *constructorName) {
     std::stringstream ss;
-    ss << "Target Constructor " << className.data() << "#" << constructorName.data() << " was not found";
-    throwError(env, "com/jnireflection/bindings/errors/ConstructorNotFoundError", ss.str());
+    ss << "Target Constructor " << className << "#" << constructorName << " was not found";
+    throwError(env, "com/jnireflection/bindings/errors/ConstructorNotFoundError", ss.str().data());
 }
 
-std::string jStringToString(JNIEnv *env, jstring jStr) {
-    if (jStr == nullptr) {
-        throwError(env, "java/lang/NullPointerException", "jstring is null");
-        return "";
-    }
-
-    return env->GetStringUTFChars(jStr, JNI_FALSE);
-}
-
-bool jStringToString(JNIEnv *env, jstring inJStr, char * outStr, unsigned long strLength) {
+bool jStringToString(JNIEnv *env, jstring inJStr, char *outStr, jsize strLength) {
     if (inJStr == nullptr) {
         throwError(env, "java/lang/NullPointerException", "jstring is null");
         return false;
@@ -82,16 +73,25 @@ heapObjectCallback(jlong class_tag, jlong size, jlong *tag_ptr, void *user_data)
 
 bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstring jSignature, jfieldID *fieldId,
                       jclass *targetClass) {
-    std::string className = jStringToString(env, jClassName);
-    std::string fieldName = jStringToString(env, jFieldName);
-    std::string signature = jStringToString(env, jSignature);
 
-    *targetClass = env->FindClass(className.data());
+    jsize strLen = env->GetStringUTFLength(jClassName);
+    char className[strLen + 1];
+    jStringToString(env, jClassName, className, strLen);
+
+    strLen = env->GetStringUTFLength(jFieldName);
+    char fieldName[strLen + 1];
+    jStringToString(env, jFieldName, fieldName, strLen);
+
+    strLen = env->GetStringUTFLength(jSignature);
+    char signature[strLen + 1];
+    jStringToString(env, jSignature, signature, strLen);
+
+    *targetClass = env->FindClass(className);
     if (*targetClass == nullptr) {
         throwClassNotFoundError(env, className);
         return false;
     }
-    *fieldId = env->GetStaticFieldID(*targetClass, fieldName.data(), signature.data());
+    *fieldId = env->GetStaticFieldID(*targetClass, fieldName, signature);
     if (*fieldId == nullptr) {
         throwFieldNotFoundError(env, className, fieldName);
         return false;
@@ -101,8 +101,13 @@ bool getStaticFieldId(JNIEnv *env, jstring jClassName, jstring jFieldName, jstri
 }
 
 bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstring jSignature, jfieldID *fieldId) {
-    std::string fieldName = jStringToString(env, jFieldName);
-    std::string signature = jStringToString(env, jSignature);
+    jsize strLen = env->GetStringUTFLength(jFieldName);
+    char fieldName[strLen + 1];
+    jStringToString(env, jFieldName, fieldName, strLen);
+
+    strLen = env->GetStringUTFLength(jSignature);
+    char signature[strLen + 1];
+    jStringToString(env, jSignature, signature, strLen);
 
     if (instance == nullptr) {
         throwError(env, "java/lang/NullPointerException", "instance is null");
@@ -115,7 +120,7 @@ bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstri
         return false;
     }
 
-    *fieldId = env->GetFieldID(targetClass, fieldName.data(), signature.data());
+    *fieldId = env->GetFieldID(targetClass, fieldName, signature);
     if (*fieldId == nullptr) {
         throwFieldNotFoundError(env, "null", fieldName);
         return false;
@@ -125,17 +130,26 @@ bool getInstanceFieldId(JNIEnv *env, jobject instance, jstring jFieldName, jstri
 }
 
 bool getStaticMethodId(JNIEnv *env, jstring jClassName, jstring jMethodName, jstring jSignature, jmethodID *methodId,
-                      jclass *targetClass) {
-    std::string className = jStringToString(env, jClassName);
-    std::string methodName = jStringToString(env, jMethodName);
-    std::string signature = jStringToString(env, jSignature);
+                       jclass *targetClass) {
 
-    *targetClass = env->FindClass(className.data());
+    jsize strLen = env->GetStringUTFLength(jClassName);
+    char className[strLen + 1];
+    jStringToString(env, jClassName, className, strLen);
+
+    strLen = env->GetStringUTFLength(jMethodName);
+    char methodName[strLen + 1];
+    jStringToString(env, jMethodName, methodName, strLen);
+
+    strLen = env->GetStringUTFLength(jSignature);
+    char signature[strLen + 1];
+    jStringToString(env, jSignature, signature, strLen);
+
+    *targetClass = env->FindClass(className);
     if (*targetClass == nullptr) {
         throwClassNotFoundError(env, className);
         return false;
     }
-    *methodId = env->GetStaticMethodID(*targetClass, methodName.data(), signature.data());
+    *methodId = env->GetStaticMethodID(*targetClass, methodName, signature);
     if (*methodId == nullptr) {
         throwMethodNotFoundError(env, className, methodName);
         return false;
@@ -150,15 +164,20 @@ bool getInstanceMethodId(JNIEnv *env, jobject instance, jstring jMethodName, jst
         return false;
     }
 
-    std::string methodName = jStringToString(env, jMethodName);
-    std::string signature = jStringToString(env, jSignature);
+    jsize strLen = env->GetStringUTFLength(jMethodName);
+    char methodName[strLen + 1];
+    jStringToString(env, jMethodName, methodName, strLen);
+
+    strLen = env->GetStringUTFLength(jSignature);
+    char signature[strLen + 1];
+    jStringToString(env, jSignature, signature, strLen);
 
     jclass targetClass = env->GetObjectClass(instance);
     if (targetClass == nullptr) {
         throwClassNotFoundError(env, "null");
         return false;
     }
-    *methodId = env->GetMethodID(targetClass, methodName.data(), signature.data());
+    *methodId = env->GetMethodID(targetClass, methodName, signature);
     if (*methodId == nullptr) {
         throwMethodNotFoundError(env, "null", methodName);
         return false;
@@ -279,19 +298,19 @@ bool jObjectToJValue(JNIEnv *env, char typeChar, jobject object, jvalue *value) 
         default:
             std::string errorMessage = "invalid parameter type: ";
             errorMessage += typeChar;
-            throwMethodSignatureError(env, errorMessage);
+            throwMethodSignatureError(env, errorMessage.data());
             return false;
     }
     return true;
 }
 
 bool jObjectArrayToJValuePtr
-        (JNIEnv *env, jobjectArray arguments, std::string &parameterTypes, jvalue *jValues) {
+        (JNIEnv *env, jobjectArray arguments, char *parameterTypes, jvalue *jValues) {
 
-    for (unsigned long i = 0; i < parameterTypes.length(); i++) {
+    int i = 0;
+    for (char *parameterTypePtr = parameterTypes; *parameterTypePtr; parameterTypePtr++, i++) {
         jobject argument = env->GetObjectArrayElement(arguments, i);
-        char parameterType = parameterTypes.at(i);
-        if (!jObjectToJValue(env, parameterType, argument, jValues + i)) {
+        if (!jObjectToJValue(env, *parameterTypePtr, argument, jValues + i)) {
             return false;
         }
     }
@@ -301,7 +320,7 @@ bool jObjectArrayToJValuePtr
 
 bool getStaticMethodInvocationDetails
         (JNIEnv *env, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
-         std::string &parameterTypes, jclass *targetClass, jmethodID *methodId, jvalue *jValues) {
+         char *parameterTypes, jclass *targetClass, jmethodID *methodId, jvalue *jValues) {
 
     if (getStaticMethodId(env, jClassName, jMethodName, jSignature, methodId, targetClass)) {
         if (jObjectArrayToJValuePtr(env, args, parameterTypes, jValues)) {

@@ -340,8 +340,10 @@ JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JniAccessor_getIn
         initialize(env);
     }
 
-    std::string targetClassString = jStringToString(env, jTargetClass);
-    jclass targetClass = env->FindClass(targetClassString.data());
+    jsize strLen = env->GetStringUTFLength(jTargetClass);
+    char targetClassString[strLen + 1];
+    jStringToString(env, jTargetClass, targetClassString, strLen);
+    jclass targetClass = env->FindClass(targetClassString);
 
     jvmtiError status = jvmti->IterateOverInstancesOfClass(
             targetClass, JVMTI_HEAP_OBJECT_EITHER, heapObjectCallback, nullptr
@@ -378,8 +380,11 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStaticVo
          jstring jParameterTypes) {
     jclass targetClass;
     jmethodID methodId;
-    std::string parameterTypes = jStringToString(env, jParameterTypes);
-    auto parameterCount = static_cast<unsigned long>(parameterTypes.length());
+
+    jsize parameterCount = env->GetStringUTFLength(jParameterTypes);
+    char parameterTypes[parameterCount + 1];
+    jStringToString(env, jParameterTypes, parameterTypes, parameterCount);
+
     jvalue jValues[parameterCount];
 
     if (getStaticMethodInvocationDetails(
@@ -395,8 +400,11 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStati
          jstring jParameterTypes) {
     jclass targetClass;
     jmethodID methodId;
-    std::string parameterTypes = jStringToString(env, jParameterTypes);
-    auto parameterCount = static_cast<unsigned long>(parameterTypes.length());
+
+    jsize parameterCount = env->GetStringUTFLength(jParameterTypes);
+    char parameterTypes[parameterCount + 1];
+    jStringToString(env, jParameterTypes, parameterTypes, parameterCount);
+
     jvalue jValues[parameterCount];
 
     if (getStaticMethodInvocationDetails(
@@ -414,8 +422,11 @@ JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStat
          jstring jParameterTypes) {
     jclass targetClass;
     jmethodID methodId;
-    std::string parameterTypes = jStringToString(env, jParameterTypes);
-    auto parameterCount = static_cast<unsigned long>(parameterTypes.length());
+
+    jsize parameterCount = env->GetStringUTFLength(jParameterTypes);
+    char parameterTypes[parameterCount + 1];
+    jStringToString(env, jParameterTypes, parameterTypes, parameterCount);
+
     jvalue jValues[parameterCount];
 
     if (getStaticMethodInvocationDetails(
