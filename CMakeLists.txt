@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
 # Project name
-set(PROJECT_NAME jni-reflection)
+set(PROJECT_NAME deimos)
 project(${PROJECT_NAME})
 
 # Directories

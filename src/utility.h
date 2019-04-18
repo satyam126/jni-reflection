@@ -13,6 +13,7 @@ extern jvmtiEnv *jvmti;
 
 
 void initialize(JNIEnv *env);
+void initialize(JNIEnv *env);
 
 void throwError(JNIEnv *env, const char *message);
 
