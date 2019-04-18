@@ -5,7 +5,7 @@
 #include "jni-reflection.h"
 
 
-JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniAccessor_getStaticObject
+JNIEXPORT jobject JNICALL Java_com_deimos_binding_Accessor_getStaticObject
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -15,7 +15,7 @@ JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniAccessor_getStaticObject
     return nullptr;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticObject
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticObject
         (JNIEnv *env, jclass clazz, jobject newObject, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -24,7 +24,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticObject
     }
 }
 
-JNIEXPORT jbyte JNICALL Java_com_deimos_bindings_JniAccessor_getStaticByte
+JNIEXPORT jbyte JNICALL Java_com_deimos_binding_Accessor_getStaticByte
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -34,7 +34,7 @@ JNIEXPORT jbyte JNICALL Java_com_deimos_bindings_JniAccessor_getStaticByte
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticByte
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticByte
         (JNIEnv *env, jclass clazz, jbyte newByte, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -43,7 +43,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticByte
     }
 }
 
-JNIEXPORT jshort JNICALL Java_com_deimos_bindings_JniAccessor_getStaticShort
+JNIEXPORT jshort JNICALL Java_com_deimos_binding_Accessor_getStaticShort
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -53,7 +53,7 @@ JNIEXPORT jshort JNICALL Java_com_deimos_bindings_JniAccessor_getStaticShort
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticShort
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticShort
         (JNIEnv *env, jclass clazz, jshort newShort, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -62,7 +62,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticShort
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_deimos_bindings_JniAccessor_getStaticInt
+JNIEXPORT jint JNICALL Java_com_deimos_binding_Accessor_getStaticInt
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -72,7 +72,7 @@ JNIEXPORT jint JNICALL Java_com_deimos_bindings_JniAccessor_getStaticInt
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticInt
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticInt
         (JNIEnv *env, jclass clazz, jint newInt, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -81,7 +81,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticInt
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_deimos_bindings_JniAccessor_getStaticLong
+JNIEXPORT jlong JNICALL Java_com_deimos_binding_Accessor_getStaticLong
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -91,7 +91,7 @@ JNIEXPORT jlong JNICALL Java_com_deimos_bindings_JniAccessor_getStaticLong
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticLong
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticLong
         (JNIEnv *env, jclass clazz, jlong newLong, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -100,7 +100,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticLong
     }
 }
 
-JNIEXPORT jfloat JNICALL Java_com_deimos_bindings_JniAccessor_getStaticFloat
+JNIEXPORT jfloat JNICALL Java_com_deimos_binding_Accessor_getStaticFloat
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -110,7 +110,7 @@ JNIEXPORT jfloat JNICALL Java_com_deimos_bindings_JniAccessor_getStaticFloat
     return 0.0f;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticFloat
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticFloat
         (JNIEnv *env, jclass clazz, jfloat newFloat, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticFloat
     }
 }
 
-JNIEXPORT jdouble JNICALL Java_com_deimos_bindings_JniAccessor_getStaticDouble
+JNIEXPORT jdouble JNICALL Java_com_deimos_binding_Accessor_getStaticDouble
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -129,7 +129,7 @@ JNIEXPORT jdouble JNICALL Java_com_deimos_bindings_JniAccessor_getStaticDouble
     return 0.0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticDouble
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticDouble
         (JNIEnv *env, jclass clazz, jdouble newDouble, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -138,7 +138,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticDouble
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_deimos_bindings_JniAccessor_getStaticBoolean
+JNIEXPORT jboolean JNICALL Java_com_deimos_binding_Accessor_getStaticBoolean
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -148,7 +148,7 @@ JNIEXPORT jboolean JNICALL Java_com_deimos_bindings_JniAccessor_getStaticBoolean
     return JNI_FALSE;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticBoolean
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticBoolean
         (JNIEnv *env, jclass clazz, jboolean newBoolean, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticBoolean
     }
 }
 
-JNIEXPORT jchar JNICALL Java_com_deimos_bindings_JniAccessor_getStaticChar
+JNIEXPORT jchar JNICALL Java_com_deimos_binding_Accessor_getStaticChar
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -167,7 +167,7 @@ JNIEXPORT jchar JNICALL Java_com_deimos_bindings_JniAccessor_getStaticChar
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticChar
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setStaticChar
         (JNIEnv *env, jclass clazz, jchar newChar, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -176,7 +176,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setStaticChar
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceObject
+JNIEXPORT jobject JNICALL Java_com_deimos_binding_Accessor_getInstanceObject
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -185,7 +185,7 @@ JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceObject
     return nullptr;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceObject
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceObject
         (JNIEnv *env, jclass clazz, jobject newObject, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -193,7 +193,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceObject
     }
 }
 
-JNIEXPORT jbyte JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceByte
+JNIEXPORT jbyte JNICALL Java_com_deimos_binding_Accessor_getInstanceByte
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -202,7 +202,7 @@ JNIEXPORT jbyte JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceByte
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceByte
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceByte
         (JNIEnv *env, jclass clazz, jbyte newByte, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -210,7 +210,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceByte
     }
 }
 
-JNIEXPORT jshort JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceShort
+JNIEXPORT jshort JNICALL Java_com_deimos_binding_Accessor_getInstanceShort
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -219,7 +219,7 @@ JNIEXPORT jshort JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceShort
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceShort
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceShort
         (JNIEnv *env, jclass clazz, jshort newShort, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -227,7 +227,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceShort
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceInt
+JNIEXPORT jint JNICALL Java_com_deimos_binding_Accessor_getInstanceInt
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -236,7 +236,7 @@ JNIEXPORT jint JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceInt
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceInt
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceInt
         (JNIEnv *env, jclass clazz, jint newInt, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -244,7 +244,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceInt
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceLong
+JNIEXPORT jlong JNICALL Java_com_deimos_binding_Accessor_getInstanceLong
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -253,7 +253,7 @@ JNIEXPORT jlong JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceLong
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceLong
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceLong
         (JNIEnv *env, jclass clazz, jlong newLong, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -261,7 +261,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceLong
     }
 }
 
-JNIEXPORT jfloat JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceFloat
+JNIEXPORT jfloat JNICALL Java_com_deimos_binding_Accessor_getInstanceFloat
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -270,7 +270,7 @@ JNIEXPORT jfloat JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceFloat
     return 0.0f;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceFloat
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceFloat
         (JNIEnv *env, jclass clazz, jfloat newFloat, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -278,7 +278,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceFloat
     }
 }
 
-JNIEXPORT jdouble JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceDouble
+JNIEXPORT jdouble JNICALL Java_com_deimos_binding_Accessor_getInstanceDouble
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -287,7 +287,7 @@ JNIEXPORT jdouble JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceDouble
     return 0.0;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceDouble
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceDouble
         (JNIEnv *env, jclass clazz, jdouble newDouble, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -295,7 +295,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceDouble
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceBoolean
+JNIEXPORT jboolean JNICALL Java_com_deimos_binding_Accessor_getInstanceBoolean
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -304,7 +304,7 @@ JNIEXPORT jboolean JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceBoole
     return JNI_FALSE;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceBoolean
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceBoolean
         (JNIEnv *env, jclass clazz, jboolean newBoolean, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -312,7 +312,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceBoolean
     }
 }
 
-JNIEXPORT jchar JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceChar
+JNIEXPORT jchar JNICALL Java_com_deimos_binding_Accessor_getInstanceChar
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -322,11 +322,11 @@ JNIEXPORT jchar JNICALL Java_com_deimos_bindings_JniAccessor_getInstanceChar
 }
 
 /*
- * Class:     com_deimos_bindings_JniAccessor
+ * Class:     com_deimos_binding_Accessor
  * Method:    setInstanceChar
  * Signature: (CLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceChar
+JNIEXPORT void JNICALL Java_com_deimos_binding_Accessor_setInstanceChar
         (JNIEnv *env, jclass clazz, jchar newChar, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -334,7 +334,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniAccessor_setInstanceChar
     }
 }
 
-JNIEXPORT jobjectArray JNICALL Java_com_deimos_bindings_JniAccessor_getInstances
+JNIEXPORT jobjectArray JNICALL Java_com_deimos_binding_Accessor_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
         initialize(env);
@@ -380,7 +380,7 @@ JNIEXPORT jobjectArray JNICALL Java_com_deimos_bindings_JniAccessor_getInstances
     return instancesArray;
 }
 
-JNIEXPORT void JNICALL Java_com_deimos_bindings_JniInvoker_invokeStaticVoidMethod
+JNIEXPORT void JNICALL Java_com_deimos_binding_Invoker_invokeStaticVoidMethod
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
          jstring jParameterTypes) {
     jclass targetClass;
@@ -400,7 +400,7 @@ JNIEXPORT void JNICALL Java_com_deimos_bindings_JniInvoker_invokeStaticVoidMetho
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniInvoker_invokeStaticObjectMethod
+JNIEXPORT jobject JNICALL Java_com_deimos_binding_Invoker_invokeStaticObjectMethod
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
          jstring jParameterTypes) {
     jclass targetClass;
@@ -422,7 +422,7 @@ JNIEXPORT jobject JNICALL Java_com_deimos_bindings_JniInvoker_invokeStaticObject
     return nullptr;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_deimos_bindings_JniInvoker_invokeStaticBooleanMethod
+JNIEXPORT jboolean JNICALL Java_com_deimos_binding_Invoker_invokeStaticBooleanMethod
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
          jstring jParameterTypes) {
     jclass targetClass;

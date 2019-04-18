@@ -30,29 +30,29 @@ void throwError(JNIEnv *env, const char *errorClassName, const char *message) {
 void throwClassNotFoundError(JNIEnv *env, const char *className) {
     std::stringstream ss;
     ss << "Target class " << className << " was not found";
-    throwError(env, "com/deimos/bindings/errors/ClassNotFoundError", ss.str().data());
+    throwError(env, "com/deimos/error/ClassNotFoundError", ss.str().data());
 }
 
 void throwFieldNotFoundError(JNIEnv *env, const char *className, const char *fieldName) {
     std::stringstream ss;
     ss << "Target field " << className << "#" << fieldName << " was not found";
-    throwError(env, "com/deimos/bindings/errors/FieldNotFoundError", ss.str().data());
+    throwError(env, "com/deimos/error/FieldNotFoundError", ss.str().data());
 }
 
 void throwMethodNotFoundError(JNIEnv *env, const char *className, const char *methodName) {
     std::stringstream ss;
     ss << "Target method " << className << "#" << methodName << " was not found";
-    throwError(env, "com/deimos/bindings/errors/MethodNotFoundError", ss.str().data());
+    throwError(env, "com/deimos/error/MethodNotFoundError", ss.str().data());
 }
 
 void throwMethodSignatureError(JNIEnv *env, const char *errorMessage) {
-    throwError(env, "com/deimos/bindings/errors/MethodSignatureError", errorMessage);
+    throwError(env, "com/deimos/error/MethodSignatureError", errorMessage);
 }
 
 void throwConstructorNotFoundError(JNIEnv *env, const char *className, const char *constructorName) {
     std::stringstream ss;
     ss << "Target Constructor " << className << "#" << constructorName << " was not found";
-    throwError(env, "com/deimos/bindings/errors/ConstructorNotFoundError", ss.str().data());
+    throwError(env, "com/deimos/error/ConstructorNotFoundError", ss.str().data());
 }
 
 bool jStringToString(JNIEnv *env, jstring inJStr, char *outStr, jsize strLength) {
