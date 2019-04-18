@@ -5,7 +5,7 @@
 #include "jni-reflection.h"
 
 
-JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticObject
+JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticObject
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -15,7 +15,7 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticO
     return nullptr;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticObject
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticObject
         (JNIEnv *env, jclass clazz, jobject newObject, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -24,7 +24,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticObje
     }
 }
 
-JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticByte
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticByte
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -34,7 +34,7 @@ JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticByt
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticByte
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticByte
         (JNIEnv *env, jclass clazz, jbyte newByte, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -43,7 +43,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticByte
     }
 }
 
-JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticShort
+JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticShort
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -53,7 +53,7 @@ JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticSh
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticShort
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticShort
         (JNIEnv *env, jclass clazz, jshort newShort, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -62,7 +62,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticShor
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticInt
+JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticInt
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -72,7 +72,7 @@ JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticInt
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticInt
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticInt
         (JNIEnv *env, jclass clazz, jint newInt, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -81,7 +81,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticInt
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticLong
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticLong
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -91,7 +91,7 @@ JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticLon
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticLong
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticLong
         (JNIEnv *env, jclass clazz, jlong newLong, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -100,7 +100,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticLong
     }
 }
 
-JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticFloat
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticFloat
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -110,7 +110,7 @@ JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticFl
     return 0.0f;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticFloat
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticFloat
         (JNIEnv *env, jclass clazz, jfloat newFloat, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticFloa
     }
 }
 
-JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticDouble
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticDouble
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -129,7 +129,7 @@ JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticD
     return 0.0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticDouble
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticDouble
         (JNIEnv *env, jclass clazz, jdouble newDouble, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -138,7 +138,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticDoub
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticBoolean
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticBoolean
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -148,7 +148,7 @@ JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStatic
     return JNI_FALSE;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticBoolean
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticBoolean
         (JNIEnv *env, jclass clazz, jboolean newBoolean, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticBool
     }
 }
 
-JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticChar
+JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JniAccessor_getStaticChar
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -167,7 +167,7 @@ JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIAccessor_getStaticCha
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticChar
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setStaticChar
         (JNIEnv *env, jclass clazz, jchar newChar, jstring jClassName, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     jclass targetClass;
@@ -176,7 +176,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setStaticChar
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceObject
+JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceObject
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -185,7 +185,7 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanc
     return nullptr;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceObject
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceObject
         (JNIEnv *env, jclass clazz, jobject newObject, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -193,7 +193,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceOb
     }
 }
 
-JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceByte
+JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceByte
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -202,7 +202,7 @@ JNIEXPORT jbyte JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceB
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceByte
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceByte
         (JNIEnv *env, jclass clazz, jbyte newByte, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -210,7 +210,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceBy
     }
 }
 
-JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceShort
+JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceShort
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -219,7 +219,7 @@ JNIEXPORT jshort JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstance
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceShort
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceShort
         (JNIEnv *env, jclass clazz, jshort newShort, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -227,7 +227,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceSh
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceInt
+JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceInt
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -236,7 +236,7 @@ JNIEXPORT jint JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceIn
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceInt
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceInt
         (JNIEnv *env, jclass clazz, jint newInt, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -244,7 +244,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceIn
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceLong
+JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceLong
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -253,7 +253,7 @@ JNIEXPORT jlong JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceL
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceLong
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceLong
         (JNIEnv *env, jclass clazz, jlong newLong, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -261,7 +261,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceLo
     }
 }
 
-JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceFloat
+JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceFloat
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -270,7 +270,7 @@ JNIEXPORT jfloat JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstance
     return 0.0f;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceFloat
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceFloat
         (JNIEnv *env, jclass clazz, jfloat newFloat, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -278,7 +278,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceFl
     }
 }
 
-JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceDouble
+JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceDouble
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -287,7 +287,7 @@ JNIEXPORT jdouble JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanc
     return 0.0;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceDouble
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceDouble
         (JNIEnv *env, jclass clazz, jdouble newDouble, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -295,7 +295,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceDo
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceBoolean
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceBoolean
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -304,7 +304,7 @@ JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstan
     return JNI_FALSE;
 }
 
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceBoolean
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceBoolean
         (JNIEnv *env, jclass clazz, jboolean newBoolean, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -312,7 +312,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceBo
     }
 }
 
-JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceChar
+JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstanceChar
         (JNIEnv *env, jclass clazz, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -322,11 +322,11 @@ JNIEXPORT jchar JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstanceC
 }
 
 /*
- * Class:     com_jnireflection_bindings_JNIAccessor
+ * Class:     com_jnireflection_bindings_JniAccessor
  * Method:    setInstanceChar
  * Signature: (CLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceChar
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniAccessor_setInstanceChar
         (JNIEnv *env, jclass clazz, jchar newChar, jobject instance, jstring jFieldName, jstring jSignature) {
     jfieldID fieldId;
     if (getInstanceFieldId(env, instance, jFieldName, jSignature, &fieldId)) {
@@ -334,7 +334,7 @@ JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JNIAccessor_setInstanceCh
     }
 }
 
-JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIAccessor_getInstances
+JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JniAccessor_getInstances
         (JNIEnv *env, jclass clazz, jstring jTargetClass) {
     if (jvmti == nullptr) {
         initialize(env);
@@ -373,7 +373,24 @@ JNIEXPORT jobjectArray JNICALL Java_com_jnireflection_bindings_JNIAccessor_getIn
     return instancesArray;
 }
 
-JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIInvoker_invokeStaticObjectMethod
+JNIEXPORT void JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStaticVoidMethod
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
+         jstring jParameterTypes) {
+    jclass targetClass;
+    jmethodID methodId;
+    std::string parameterTypes = jStringToString(env, jParameterTypes);
+    auto parameterCount = static_cast<unsigned long>(parameterTypes.length());
+    jvalue jValues[parameterCount];
+
+    if (getStaticMethodInvocationDetails(
+            env, jClassName, jMethodName, jSignature, args,
+            parameterTypes, &targetClass, &methodId, jValues
+    )) {
+        env->CallStaticVoidMethodA(targetClass, methodId, jValues);
+    }
+}
+
+JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStaticObjectMethod
         (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
          jstring jParameterTypes) {
     jclass targetClass;
@@ -390,4 +407,23 @@ JNIEXPORT jobject JNICALL Java_com_jnireflection_bindings_JNIInvoker_invokeStati
     }
 
     return nullptr;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_jnireflection_bindings_JniInvoker_invokeStaticBooleanMethod
+        (JNIEnv *env, jclass clazz, jstring jClassName, jstring jMethodName, jstring jSignature, jobjectArray args,
+         jstring jParameterTypes) {
+    jclass targetClass;
+    jmethodID methodId;
+    std::string parameterTypes = jStringToString(env, jParameterTypes);
+    auto parameterCount = static_cast<unsigned long>(parameterTypes.length());
+    jvalue jValues[parameterCount];
+
+    if (getStaticMethodInvocationDetails(
+            env, jClassName, jMethodName, jSignature, args,
+            parameterTypes, &targetClass, &methodId, jValues
+    )) {
+        return env->CallStaticBooleanMethodA(targetClass, methodId, jValues);
+    }
+
+    return JNI_FALSE;
 }
